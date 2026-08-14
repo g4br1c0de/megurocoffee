@@ -7,7 +7,9 @@ cpSync('assets', 'dist/assets', { recursive: true });
 cpSync('.openai', 'dist/.openai', { recursive: true });
 writeFileSync('dist/server/index.js', `export default {
   async fetch(request, env) {
-    return env.ASSETS.fetch(request);
+    const url = new URL(request.url);
+    if (url.pathname === '/') url.pathname = '/index.html';
+    return env.ASSETS.fetch(new Request(url, request));
   }
 };
 `);
