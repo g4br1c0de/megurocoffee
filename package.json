@@ -3,6 +3,6 @@
   "private": true,
   "version": "1.0.0",
   "scripts": {
-    "build": "node -e \"console.log('Meguro Café static site ready')\""
+    "build": "node build.mjs"
   }
 }
